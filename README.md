@@ -33,11 +33,8 @@ Pandemi covid-19 yang menggemparkan dunia tentunya memaksa seluruh manusia untuk
 
 
 # Persona
-1. Admin
-Admin bertugas untuk mengurus otentikasi dan otorisasi user, admin juga melakukan verifikasi rekomendasi buku yang diberikan oleh user yang memiliki akun, ketika rekomendasi buku telah diverifikasi oleh admin maka buku rekomendasi akan muncul pada landing page.
+1. Admin: Admin bertugas untuk mengurus otentikasi dan otorisasi user, admin juga melakukan verifikasi rekomendasi buku yang diberikan oleh user yang memiliki akun, ketika rekomendasi buku telah diverifikasi oleh admin maka buku rekomendasi akan muncul pada landing page.
 
-2. User yang tidak memiliki akun
-User yang tidak memiliki akun hanya dapat melihat rekomendasi buku berdasarkan genre pada landing page.
+2. User yang tidak memiliki akun: User yang tidak memiliki akun hanya dapat melihat rekomendasi buku berdasarkan genre pada landing page.
 
-3. User yang memiliki akun
-User yang memiliki akun dapat mengisi form rekomendasi buku, mendapat rekomendasi buku berdasarkan pengisian form,  dan membuat wishlist bukunya sendiri.
+3. User yang memiliki akun: User yang memiliki akun dapat mengisi form rekomendasi buku, mendapat rekomendasi buku berdasarkan pengisian form,  dan membuat wishlist bukunya sendiri.
