@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<html lang="en">
+    <head>
+        
+
+        <meta charset="UTF-8" />
+        <title>Search Book</title>
+        <style>
+            table{
+            border-collapse: collapse;
+            width: 100%;
+            }
+
+            th,td {
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: aquamarine;
+            }
+
+            h1{
+                font-weight: bold;
+                text-align: center;
+            }
+
+
+
+        </style>
+
+    </head>
+    <body>
+        
+        <!-- <p style="text-align: center;" >They are my Friends</p> -->
+        <table>
+            <tr>
+                <th>Tittle</th>
+                <th>Author</th>
+                <th>Genre</th>
+                
+            </tr>
+
+            {% for book in books %}
+                    <tr>
+                        <td>{{book.Name}}</td>
+                        <td>{{book.Author}}</td>
+                        <td>{{book.Genre}}</td>
+                    </tr>
+
+                {% endfor %}
+
+            
+
+        </table>
+
+    </body>
+
+</html>
+
+{% endblock %}
