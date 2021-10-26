@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
     path('explore/', include('mancay.urls')),
+    path('sena/', include('sena.urls')),
 ]

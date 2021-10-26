@@ -1,0 +1,48 @@
+body {
+    background: #fff8e5;
+}
+
+body h1{
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 64.5333px;
+    line-height: 88px;
+}
+
+body p{
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36.6043px;
+    line-height: 50px;
+    text-align: justify;
+}
+
+.carousel.slide {
+    margin-left: 10%;
+}
+
+.wrapper{
+    display: block;
+    margin-bottom: 200px;
+    margin-top: 160px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-container {
+    display: block;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 650px;
+}
+
+.testimoni {
+    display: flex;
+    justify-content: center;
+}
+
+.testimoni img {
+    max-width: 582px;
+}
