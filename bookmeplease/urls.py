@@ -22,4 +22,5 @@ urlpatterns = [
     path('', include('main.urls')),
     path('explore/', include('mancay.urls')),
     path('sena/', include('sena.urls')),
+    path('fina/', include('fina.urls'))
 ]
