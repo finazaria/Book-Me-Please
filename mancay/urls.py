@@ -8,4 +8,5 @@ urlpatterns = [
     path('', index, name='index'),
     path('searchbox', SearchBar, name='SearchBar'),
     path('searchGenre', GenreSearch, name='GenreSearch'),
+#     path('searchGenre', searchGenre2, name='GenreSearch'),
 ]

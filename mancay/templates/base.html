@@ -62,8 +62,9 @@
             }
 
 
-            input[type=checkbox]{
+            input[type=button]{
               margin-left: 12px;
+              width: auto;
             }
 
             label{
@@ -146,7 +147,7 @@
                 position: absolute;
                 width: 250px;
                 height: 30px;
-                left: 30px;
+                left: 35px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -214,16 +215,33 @@
         <ul class="navbar-nav">
          
           <li class="nav-item">
-            <a class="nav-link" href="http://localhost:8000/lab-4/">Explore</a>
+            <a class="nav-link" href="http://localhost:8000/explore/">Explore</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="http://localhost:8000/lab-4/add-note">Sign In</a>
+            <a class="nav-link" href="http://localhost:8000/explore/searchGenre">Sign In</a>
           </li>
           <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Genre
                 </a>
                 <ul class="dropdown-menu">
+                  <form class="form-inline" method="post" action="{% url 'GenreSearch' %}">
+                    {% csrf_token %}
+                    <input type="submit" id="btnaction" name="Action" value="Action">
+                    <input type="submit" id="btnaction" name="Comedy" value="Comedy">
+                    <input type="submit" id="btnaction" name="Crime" value="Crime">
+                    <input type="submit" id="btnaction" name="Drama" value="Drama">
+                    <input type="submit" id="btnaction" name="Fantasy" value="Fantasy">
+                    <input type="submit" id="btnaction" name="Historycal" value="Historycal">
+                    <input type="submit" id="btnaction" name="Horror" value="Horror">
+                    <input type="submit" id="btnaction" name="Mystery" value="Mystery">
+                    <input type="submit" id="btnaction" name="Myth" value="Myth">
+                    <input type="submit" id="btnaction" name="Romance" value="Romance">
+
+
+
+
+                  </form>
                     <!-- <input type="checkbox" class="form-check-input" id="check1" name="Action" value="something">
                     <label class="form-check-label" for="check1">Action</label>
 
@@ -255,18 +273,18 @@
                     <label class="form-check-label" for="check10">Romance</label> -->
                     
                     <!-- <input type="submit" name="action" value="action"></button> -->
-                    <button class="btn" onclick="filterSelection('Action')">Action</button>
-                    <button class="btn" onclick="filterSelection('Action')">Comedy</button>
-                    <button class="btn" onclick="filterSelection('Action')">Crime</button>
-                    <button class="btn" onclick="filterSelection('Action')">Drama</button>
-                    <button class="btn" onclick="filterSelection('Action')">Fantasy</button>
-                    <button class="btn" onclick="filterSelection('Action')">Historycal</button>
-                    <button class="btn" onclick="filterSelection('Action')">Horror</button>
-                    <button class="btn" onclick="filterSelection('Action')">Mystery</button>
-                    <button class="btn" onclick="filterSelection('Action')">Myth</button>
-                    <button class="btn" onclick="filterSelection('Action')">Romance</button>
+                    <!-- <button class="btn" onclick="filterSelection('Action')">Action</button>
+                    <button class="btn" onclick="filterSelection('Comedy')">Comedy</button>
+                    <button class="btn" onclick="filterSelection('Crime')">Crime</button>
+                    <button class="btn" onclick="filterSelection('Drama')">Drama</button>
+                    <button class="btn" onclick="filterSelection('Fantasy')">Fantasy</button>
+                    <button class="btn" onclick="filterSelection('Historycal')">Historycal</button>
+                    <button class="btn" onclick="filterSelection('Horror')">Horror</button>
+                    <button class="btn" onclick="filterSelection('Mystery')">Mystery</button>
+                    <button class="btn" onclick="filterSelection('Myth')">Myth</button>
+                    <button class="btn" onclick="filterSelection('Romance')">Romance</button> -->
 
-                    <!-- <a href="#">Action</a> -->
+                    <!-- <a href="http://localhost:8000/explore/searchGenre" class="btn btn-primary" id="action">Action</a> -->
                     <!-- <a href="#">Comedy</a>
                     <a href="#">Crime</a>
                     <a href="#">Drama</a>
@@ -324,6 +342,27 @@
   </script>
 
   <!-- filter Genre -->
+  <!-- <script>
+    const button = document.querySelector('.input[type=button]');
+
+    button.addEventListener('click', updateButton);
+
+    function updateButton(){
+      if (button.value === 'Action'){
+        
+      }
+    }
+
+  </script> -->
+
+
+
+  <script>
+    document.getElementById('action').addEventListener('click',function(){
+      alert('clicked')
+
+    })
+  </script>
 
 
   <!-- Optional JavaScript -->

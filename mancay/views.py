@@ -26,11 +26,89 @@ def SearchBar(request):
 
 
 def GenreSearch(request):
+
+    # genre1 = request.POST['Action']
+    # genre2 = request.POST['Fantasy']
+
+    # if request.POST == genre1:
+    #     books = Book.objects.filter(Genre__contains = 'Action')
+    #     return render(request, 'searchGenre.html' , {'books':books} )
+
+    # elif request.POST == genre2:
+    #     books = Book.objects.filter(Genre__contains = 'Fantasy')
+    #     return render(request, 'searchGenre.html' , {'books':books} )
+
+
+    if request.POST.get('Action'):
+        genre = request.POST['Action']
+        books = Book.objects.filter(Genre__contains = 'Action')
+        return render(request, 'searchGenre.html' , {'books':books, 'genre':genre} )
+
+    elif request.POST.get('Comedy'):
+        genre = request.POST['Comedy']
+        books = Book.objects.filter(Genre__contains = 'Comedy')
+        return render(request, 'searchGenre.html' , {'books':books, 'genre':genre} )
+
+    elif request.POST.get('Crime'):
+        genre = request.POST['Crime']
+        books = Book.objects.filter(Genre__contains = 'Crime')
+        return render(request, 'searchGenre.html' , {'books':books, 'genre':genre} )
+
+    elif request.POST.get('Fantasy'):
+        genre = request.POST['Fantasy']
+        books = Book.objects.filter(Genre__contains = 'Fantasy')
+        return render(request, 'searchGenre.html' , {'books':books, 'genre':genre} )
+
+    elif request.POST.get('Historycal'):
+        genre = request.POST['Historycal']
+        books = Book.objects.filter(Genre__contains = 'Historycal')
+        return render(request, 'searchGenre.html' , {'books':books, 'genre':genre} )
+
+    elif request.POST.get('Horror'):
+        genre = request.POST['Horror']
+        books = Book.objects.filter(Genre__contains = 'Horror')
+        return render(request, 'searchGenre.html' , {'books':books, 'genre':genre} )
+
+    elif request.POST.get('Mystery'):
+        genre = request.POST['Mystery']
+        books = Book.objects.filter(Genre__contains = 'Mystery')
+        return render(request, 'searchGenre.html' , {'books':books, 'genre':genre} )
+
+    elif request.POST.get('Myth'):
+        genre = request.POST['Myth']
+        books = Book.objects.filter(Genre__contains = 'Myth')
+        return render(request, 'searchGenre.html' , {'books':books, 'genre':genre} )
+
+    elif request.POST.get('Romance'):
+        genre = request.POST['Romance']
+        books = Book.objects.filter(Genre__contains = 'Romance')
+        return render(request, 'searchGenre.html' , {'books':books, 'genre':genre} )
+
+    elif request.POST.get('Drama'):
+        genre = request.POST['Drama']
+        books = Book.objects.filter(Genre__contains = 'Drama')
+        return render(request, 'searchGenre.html' , {'books':books, 'genre':genre} )
+
+
+
+        
+
+
+
+
+
+
+
+
     # actions = Book.objects.filter(Genre__contains = )
-    if request.method == 'POST':
-        if request.POST["action"] == "action":
-            books = Book.objects.filter(Genre__contains = 'Action')
-            return render(request, 'searchGenre.html',{'books':books})
+    # if request.method == 'POST':
+    #     if request.POST["action"] == "action":
+    #         books = Book.objects.filter(Genre__contains = 'Action')
+    #         return render(request, 'searchGenre.html',{'books':books})
+    # books = Book.objects.all().values()
+    # response = {'books' : books}
+    # return render(request, 'searchGenre.html', response)
+
     
 
     
