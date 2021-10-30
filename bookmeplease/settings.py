@@ -36,7 +36,7 @@ PRODUCTION = os.getenv('DATABASE_URL') is not None
 # SECURITY WARNING: don't run with debug turned on in production!
 # If you want to enable debugging on Heroku for learning purposes,
 # set this to True.
-DEBUG = not PRODUCTION
+DEBUG = True
 
 HEROKU_APP_NAME = os.getenv('HEROKU_APP_NAME', '')
 
@@ -151,6 +151,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
 # This is the directory for storing `collectstatic` results.
 # This shouldn't be included in your Git repository.
 STATIC_ROOT = BASE_DIR / 'staticfiles'
@@ -160,6 +161,9 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/img')
+MEDIA_URL = '/img/'
+
 # Make sure the directories exist to prevent errors when doing `collectstatic`.
 for directory in [*STATICFILES_DIRS, STATIC_ROOT]:
     directory.mkdir(exist_ok=True)
@@ -167,3 +171,4 @@ for directory in [*STATICFILES_DIRS, STATIC_ROOT]:
 # Enable compression and caching features of whitenoise.
 # You can remove this if it causes problems on your setup.
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
