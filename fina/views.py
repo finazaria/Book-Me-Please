@@ -5,7 +5,7 @@ from .models import User, Profile
 from .models import *
 from mancay.models import Book
 from .forms import ProfilePicForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 def userLogin(request):
@@ -28,24 +28,34 @@ def userLogin(request):
         
     context={}
     return render(request, 'login.html', context)
-    
 
+def userLogout(request):
+    logout(request)
+    return redirect('login')
+    
 def profilePage(request):
-    profile = Profile.objects.all()
-    response = {'profile' : profile}      # Iterate user di html nantinya
-    return render(request, 'user_profile_details.html', response)
+    # profile = request.User.Profile.objects.all()
+    # response = {'profile' : profile}      # Iterate user di html nantinya
+    return render(request, 'user_profile_details.html')
+    # nanti di html tinggal user.profile.attribute
 
 def profilePicForm(request):
-    user = request.user
-    context={}
-    form = ProfilePicForm(instance=user)
-    
-    if form.is_valid() and request.method == "POST":
-        # Save the form data to model
-        form.save()
-        # return HttpResponseRedirect("/lab-4")      # To redirect to /lab-4 after validating and saving the data
+    if request.method == "POST":
+        # instance nya merupakan info2 yang udah ada dari si user
+        form = ProfilePicForm(request.POST, 
+        request.FILES, instance=request.user.profile)
 
-    context['form'] = form
+        if form.is_valid():
+            form.save()      # Save the form data to model
+            messages.success(request, f'Your profile picture has been updated!')
+            return redirect('profilePage')
+        else:
+            messages.error(request, f'There is an error')
+
+    else:
+        form = ProfilePicForm(instance=request.user.profile)
+
+    context={'form':form}
     # form untuk ganti prof pic di page terpisah
     return render(request, 'edit_profile_pic.html', context)
 

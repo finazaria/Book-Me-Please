@@ -5,25 +5,16 @@
 <meta charset="UTF-8" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/edit_profile_pic.css' %}">
     <body>
-        {% for p in profile %}
-            <div class="profile-pic"> 
-                <!-- Tergantung request, trs user (karena ini semua tergantung user siapa yang sedang logged in), 
-                    memiliki relasi dengan PROFILE model, and
-                    what we need to access is the "profile_pic" attribute.
-                    Dan yang kita butuhkan adalah url nya -->
-                <!-- <img class="profile-pic-img" src={{request.user.profile.profile_pic.url}}>  -->
-                <img class="profile-pic-img" src={{p.profile_pic.url}}> 
-            </div>
-            <div class="edit-profile-picture">
-                <form action="" method="POST">
-                    {% csrf_token %}
+        <div class="edit-profile-picture">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="choose-file-btn">
                     {{ form.profile_pic }}
-
-                    <input type="Edit Profile Picture">
-
-                </form>
-            </div>
-            {% endfor %}
+                </div>
+                <br>
+                <button class="update-btn" type="submit">Update</button>
+            </form>
+        </div>
     </body>
 <!-- {% endblock content %} -->
 

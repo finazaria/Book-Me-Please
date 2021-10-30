@@ -5,30 +5,36 @@
 <meta charset="UTF-8" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/user_profile_details.css' %}">
     <body>
-        {% for p in profile %}
-            <div class="user-name">
-                {{p.name}}
-            </div>
-            <h5 class="word-member-since">
-                Member since
-            </h5>
-            <div class="member-since">
-                {{p.member_since}}
-            </div>
-            <div class="profile-pic"> 
-                <!-- Tergantung request, trs user (karena ini semua tergantung user siapa yang sedang logged in), 
-                    memiliki relasi dengan PROFILE model, and
-                    what we need to access is the "profile_pic" attribute.
-                    Dan yang kita butuhkan adalah url nya -->
-                <!-- <img class="profile-pic-img" src={{request.user.profile.profile_pic.url}}>  -->
-                <img class="profile-pic-img" src={{p.profile_pic.url}}> 
-            </div>
+        <div class="user-name">
+            {{user.profile.name}}
+        </div>
+        <h5 class="word-member-since">
+            Member since
+        </h5>
+        <div class="member-since">
+            {{user.profile.member_since}}
+        </div>
+        <div class="profile-pic"> 
+            <!-- Tergantung request, trs user (karena ini semua tergantung user siapa yang sedang logged in), 
+                memiliki relasi dengan PROFILE model, and
+                what we need to access is the "profile_pic" attribute.
+                Dan yang kita butuhkan adalah url nya -->
+            <!-- <img class="profile-pic-img" src={{request.user.profile.profile_pic.url}}>  -->
+            <img class="profile-pic-img" src={{user.profile.profile_pic.url}} style="max-width: 230px;"> 
+        </div>
 
-            <div class="edit-profpic-text" >
-                <a href="http://localhost:8000/fina/edit-profile-picture">Edit Profile Picture</a>
-            </div>
-            
+        <br>
+        <div class="edit-profpic-text" >
+            <a href="http://localhost:8000/fina/profile/edit-profile-picture">Edit Profile Picture</a>
+        </div>
 
-            {% endfor %}
+        <br>
+
+        {% if user.is_authenticated %}
+        <button type="submit" class="logout-button">
+            <a href="http://localhost:8000/fina/">LogOut</a>
+        </button>
+        {% endif %}
+
     </body>
 <!-- {% endblock content %} -->

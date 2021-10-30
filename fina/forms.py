@@ -1,15 +1,13 @@
 from django.forms import forms
 from django.forms.models import ModelForm
-
-
-from .models import *
+from django.contrib.auth.models import User
+from .models import Profile
 
 # Form cuma untuk ganti profile picture
 class ProfilePicForm(ModelForm):
     class Meta:
         model = Profile
-        fields = '__all__'
-        # exclude => apa aja yang gak bisa diupdate
-        exclude = ['user', 'member_since']
+        fields = ['profile_pic']
+    
 
 
