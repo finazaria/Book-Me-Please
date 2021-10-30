@@ -36,7 +36,7 @@ PRODUCTION = os.getenv('DATABASE_URL') is not None
 # SECURITY WARNING: don't run with debug turned on in production!
 # If you want to enable debugging on Heroku for learning purposes,
 # set this to True.
-DEBUG = not PRODUCTION
+DEBUG = True
 
 HEROKU_APP_NAME = os.getenv('HEROKU_APP_NAME', '')
 
@@ -171,3 +171,4 @@ for directory in [*STATICFILES_DIRS, STATIC_ROOT]:
 # Enable compression and caching features of whitenoise.
 # You can remove this if it causes problems on your setup.
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+

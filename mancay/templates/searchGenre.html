@@ -1,466 +1,163 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
-
-<!-- <!DOCTYPE html>
-
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Manrope">
-        
-        <title>BookMePlease</title>
-
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
-        rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
-        crossorigin="anonymous">
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
-
-        <style>
-
-          body{
-            background-color: #E5E5E5;
-          }
-            
-          .navbar{
-            margin-bottom: 50px;
-            background-color: #FFB345;
-
-          }
-
-          .navbar a{
-            color: white;
-          }
-            
-
-            .navbar a:hover {
-              background-color: #f79e1e;
-              color: white;
-              border-radius: 12px;
-            }
-
-            .dropdown-menu{
-              min-width: 1020px;
-              background-color:  #FFB345;
-              text-align: center;
-              
-            }
-
-            .dropdown-menu button{
-              margin-left: 18px;
-            }
-
-            .dropdown-menu button:hover{
-              background-color: #f79e1e;
-              
-            }
-
-
-            .dropdown-menu > li{
-              display: inline-block;
-              
-            }
-
-
-            input[type=checkbox]{
-              margin-left: 12px;
-            }
-
-            label{
-              margin-right: 12px;
-            }
-
-            .open >ul{
-              display: inline-flex;
-            }
-
-
-
-
-            form{
-              margin-left: auto;
-              margin-right: 0;
-
-            }
-
-            .search{
-                position: relative;
-                width: 30px;
-                height: 30px;
-                background: #FFF;
-                border-radius: 30px;
-                transition: 0.5s;
-                box-shadow: 0 0 0 5px #f79e1e;
-                overflow: hidden;
-                
-               
-                
-
-            }
-
-            .search.active{
-                width: 250px;
-            }
-
-            .search .icon
-
-            {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 30px;
-                height: 30px;
-                background: #f79e1e;
-                border-radius: 30px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 1000;
-                cursor: pointer;
-            }
-
-            .search .icon::before
-
-            {
-                content: '';
-                position: absolute;
-                width: 15px;
-                height: 15px;
-                border: 3px solid #FFF;
-                border-radius: 50%;
-                transform: translate(-4px,-4px);
-            }
-
-            .search .icon::after
-
-            {
-                content: '';
-                position: absolute;
-                width: 3px;
-                height: 12px;
-                background: #FFF;
-                transform: translate(6px,6px) rotate(315deg);
-            }
-
-            .search .input{
-                position: absolute;
-                width: 250px;
-                height: 30px;
-                left: 35px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .search .input input{
-                position: absolute;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                border: none;
-                outline: none;
-                font-size: 18px;
-                padding: 10px 0;
-
-
-            }
-
-            .clear{
-                position: absolute;
-                transform: translateY(-50%);
-                top: 50%;
-                width: 15px;
-                height: 15px;
-                right: 15px;
-                cursor: pointer;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .clear::before{
-                position: absolute;
-                content: '';
-                width: 1px;
-                height: 15px;
-                background: #FFB345;
-                transform: rotate(45deg);
-            }
-
-            .clear::after{
-                position: absolute;
-                content: '';
-                width: 1px;
-                height: 15px;
-                background: #FFB345;
-                transform: rotate(315deg);
-            }
-        
-            table{
-            border-collapse: collapse;
-            width: 100%;
-            }
-
-            th,td {
-                text-align: left;
-                padding: 8px;
-            }
-
-            tr:nth-child(even) {
-                background-color: aquamarine;
-            }
-
-            h1{
-                font-weight: bold;
-                text-align: center;
-            }
-
-            .donotShow_row {
-                display: none;
-            }
-
-
-
-
-           
-
-        </style>
-
-    </head>
-
-    <body>
-<nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'index' %}">Book Me Please</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-         
-          <li class="nav-item">
-            <a class="nav-link" href="http://localhost:8000/lab-4/">Explore</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="http://localhost:8000/explore/searchGenre">Sign In</a>
-          </li>
-          <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Genre
-                </a>
-                <ul class="dropdown-menu">
-                    
-                    
-                    <!-- <input type="submit" name="action" value="action"></button> -->
-                    <!-- <button class="btn" onclick="filterSelection('Action')">Action</button>
-                    <button class="btn" onclick="filterSelection('Comedy')">Comedy</button>
-                    <button class="btn" onclick="filterSelection('Crime')">Crime</button>
-                    <button class="btn" onclick="filterSelection('Drama')">Drama</button> -->
-                    <!-- <button class="btn" data-id="fantasy" type="button">Fantasy</button> -->
-                    <!-- <button class="btn" onclick="filterSelection('Historycal')">Historycal</button>
-                    <button class="btn" onclick="filterSelection('Horror')">Horror</button>
-                    <button class="btn" onclick="filterSelection('Mystery')">Mystery</button>
-                    <button class="btn" onclick="filterSelection('Myth')">Myth</button>
-                    <button class="btn" onclick="filterSelection('Romance')">Romance</button> -->
-
-                    <!-- <a href="http://localhost:8000/explore/searchGenre" class="btn btn-primary" id="action">Action</a> -->
-                    <!-- <a href="#">Comedy</a>
-                    <a href="#">Crime</a>
-                    <a href="#">Drama</a>
-                    <a href="#">Fantasy</a>
-                    <a href="#">Historycal</a>
-                    <a href="#">Horror</a>
-                    <a href="#">Mystery</a>
-                    <a href="#">Myth</a>
-                    <a href="#">Romance</a> -->
-                </ul>
-              </li>
-        </ul>
-
-        <!-- <div class="subnav">
-          <button class="subnavbtn">GENRE <i class="fa fa-caret-down"></i></button>
-          <div class="subnav-content">
-            <a href="#">Action</a>
-            <a href="#">Comedy</a>
-            <a href="#">Crime</a>
-            <a href="#">Drama</a>
-            <a href="#">Fantasy</a>
-            <a href="#">Historycal</a>
-            <a href="#">Horror</a>
-            <a href="#">Mystery</a>
-            <a href="#">Myth</a>
-            <a href="#">Romance</a>
-          </div>
-        </div> -->
-        
-      
-     
-    <!-- <form class="d-flex flex-row-reverse" method="post" action="{% url 'SearchBar' %}">
-      {% csrf_token %}
-      <div class="search">
-        <div class="icon"></div>
-        <div class="input">
-            <input type="text" placeholder="Search Book or Author" id="mysearch" name="searched">
-        </div>
-        <span class="clear" onclick="document.getElementById('mysearch').value = '' "></span>
-        <input type="submit" style="position: absolute; left: -9999px"/>
-    </div>
-  
-
-    </form>
-
-    </div> -->
-    
-<!-- search animation -->
-  <!-- <script>
-    const icon = document.querySelector('.icon');
-    const search = document.querySelector('.search');
-    icon.onclick = function(){
-        search.classList.toggle('active')
-    }
-  </script> -->
-
-  <!-- filter Genre -->
-  <!-- <script>
-    document.getElementById('action').addEventListener('click',function(){
-        
-        table = document.getElementById('table-filter');
-        console.log(table)
-        tr = table.querySelector('tbody').getElementsByTagName('tr');
-        console.log(tr)
-      for (var i = 0; i<tr.length; i++){
-          if (tr[i].getElementsByTagName('td')[2].innerText.indexof('Action') >-1){
-              tr[i].classList.remove('donotShow_row')
-
-          }else{
-              tr[i].classList.add('donotShow_row')
-
-          }
-      }
-
-    })
-  </script> --> -->
-
-  <!-- <script>
-      $('.btn').on("click", function(){
-          var $this = $(this);
-          $this.addClass("active").siblings().removeClass("active");
-      })
-  </script> -->
-
-  
-  <!-- <script>
-      const filterbtn = document.querySelectorAll(".btn");
-      filterbtn.forEach(function(btnn){
-          btnn.addEventListener("click", function(e){
-              const category = console.log(e.currentTarget.dataset.id);
-
-              
-          })
-
-
-      })
-
-
-
-      
-      
-  </script> -->
-
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script> -->
-<!-- Always remember to call the above files first before calling the bootstrap.min.js file -->
-  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-  </nav> -->
-
-
-
-
-        
-
-        <!-- <section class="book">
-            <div class="tittle">
-                <h2>All Book</h2>
-                <div class="underline"></div>
-            </div>
-
-            <div class="section-center">
-
-            </div>
-        </section> -->
-        
-        <!-- <p style="text-align: center;" >They are my Friends</p> -->
-        <!-- <table id="table-filter" class="box">
-            <thead>
-                <tr>
-                    <th>Tittle</th>
-                    <th>Author</th>
-                    <th>Genre</th>
-                    
-                </tr>
-
-            </thead>
-            
-
-            {% for book in books %}
-            <tbody>
-                <tr>
-                    <td>{{book.Name}}</td>
-                    <td>{{book.Author}}</td>
-                    <td class="genre">{{book.Genre}}</td>
-                </tr>
-            </tbody>
-                    
-
-                {% endfor %}
-
-            
-
-        </table>
-
-    </body>
-
-</html> -->
-
-
-
 {% block content %}
-    <style>
-        h2 {
-        text-align: center;
-        margin-bottom: 20px;
-        }
-    </style>
+<style>
+  a,
+  a:hover,
+  a:focus {
+      color: inherit;
+  }
+
+  .container-fluid,
+  .container {
+      max-width: none;
+  }
+
+  .card-container {
+      padding: 100px 0px;
+      -webkit-perspective: 1000;
+      perspective: 1000;
+  }
+
+  .profile-card-6 {
+      max-width: 300px;
+      background-color: #FFF;
+      border-radius: 5px;
+      box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      position: relative;
+      margin: 10px auto;
+      cursor: pointer;
+  }
+
+
+
+  .profile-card-6 .profile-name {
+      position: absolute;
+      top: 10px;
+      left: 6px;
+      font-size: 25px;
+      font-weight: bold;
+      color: #FFF;
+      padding: 15px 20px;
+      background: linear-gradient(140deg, rgba(0, 0, 0, 0.4) 50%, rgba(255, 255, 0, 0) 50%);
+      transition: all 0.15s linear;
+  }
+
+  .profile-card-6 .profile-position {
+      position: absolute;
+      color: #FFF;
+      
+      left: 15px;
+      bottom: 8px;
+      transition: all 0.15s linear;
+      font-weight: bold;
+  }
+
+  .profile-card-6 .profile-overview {
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 50%, rgba(255, 255, 0, 0));
+      color: #FFF;
+      padding: 50px 0px 20px 0px;
+      transition: all 0.15s linear;
+  }
+
+  .profile-card-6 .profile-overview h3 {
+      font-weight: bold;
+  }
+
+  .profile-card-6 .profile-overview p {
+      color: rgba(255, 255, 255, 0.7);
+  }
+
+  .profile-card-6:hover img {
+      filter: brightness(80%);
+  }
+
+  .profile-card-6:hover .profile-name {
+      padding-left: 25px;
+      padding-top: 20px;
+  }
+
+  .profile-card-6:hover .profile-position {
+      padding-bottom: 12px;
+  }
+
+  .profile-card-6:hover .profile-overview {
+      padding-bottom: 25px;
+  }
+
+  .profile-card-6 .col-xs-4{
+      align-items: center;
+      bottom: 30px;
+      color: #FFF;
+      transition: all linear 0.25s;
+      
+  }
+
+  .profile-card-6 .col-xs-4 p{
+      text-align: center;
+      margin-bottom: 10px;
+
+  }
+
+  .profile-card-6 img {
+      max-width: 100%;
+      max-height: 100%;
+      
+  }
+
+  h2{
+    text-align: center;
+    
+}
+
+
+
+
+
+</style>
+
 <body>
-    <table width = "50%" border="1" align="center">
-        <h2 style="font-weight: bold;" >{{genre}} </h1>
-       
-       
-        <tr>
-            <th>Name</th>
-            <th>Author</th>
-            <th>Genre</th>
-            
-        </tr>
 
-        {% if books %}
-            {% for book in books %}
-                <tr>
-                    <td>{{book.Name}}</td>
-                    <td>{{book.Author}}</td>
-                    <td>{{book.Genre}}</td>
-                </tr>
 
-            {% endfor %}
-        {% endif %}
+  <!-- {% if books.name != null %} -->
+    
+  <div class="container-fluid">
+      
+      <div class="row">
+          {% for book in books %}
+          <div class="col-md-3 mb-5 d-flex">
+              <div class="profile-card-6">
+                  <img src= {{book.Background_photo.url}}>
+                  <div class="profile-name">{{book.Name}}</div>
+                  <div class="profile-position">{{book.Genre}}</div>
+                  <div class="profile-overview">
+                      <div class="profile-overview">
+                          <div class="row text-center">
+                              <div class="col-xs-4">
+                                  <p>{{book.Author}}</p>
+                              </div>
+                          </div>
+                      </div>
+                      </div>
+                  </div>
+              </div>
+              {% endfor %}
+      </div>
+              
+              
+  </div>
 
-    </table>
+  <!-- {% else %}
 
+  <h2>We will provide more book... </h2>
+
+  {% endif %}
+      -->
 </body>
 {% endblock %}
