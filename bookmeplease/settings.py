@@ -151,6 +151,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
 # This is the directory for storing `collectstatic` results.
 # This shouldn't be included in your Git repository.
 STATIC_ROOT = BASE_DIR / 'staticfiles'
@@ -159,6 +160,9 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/img')
+MEDIA_URL = '/img/'
 
 # Make sure the directories exist to prevent errors when doing `collectstatic`.
 for directory in [*STATICFILES_DIRS, STATIC_ROOT]:
