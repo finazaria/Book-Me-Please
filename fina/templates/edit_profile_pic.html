@@ -3,18 +3,9 @@
 <!-- 
 {% block content %} -->
 <meta charset="UTF-8" />
-<link rel="stylesheet" type="text/css" href="{% static 'css/user_profile_details.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/edit_profile_pic.css' %}">
     <body>
         {% for p in profile %}
-            <div class="user-name">
-                {{p.name}}
-            </div>
-            <h5 class="word-member-since">
-                Member since
-            </h5>
-            <div class="member-since">
-                {{p.member_since}}
-            </div>
             <div class="profile-pic"> 
                 <!-- Tergantung request, trs user (karena ini semua tergantung user siapa yang sedang logged in), 
                     memiliki relasi dengan PROFILE model, and
@@ -23,12 +14,17 @@
                 <!-- <img class="profile-pic-img" src={{request.user.profile.profile_pic.url}}>  -->
                 <img class="profile-pic-img" src={{p.profile_pic.url}}> 
             </div>
+            <div class="edit-profile-picture">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form.profile_pic }}
 
-            <div class="edit-profpic-text" >
-                <a href="http://localhost:8000/fina/edit-profile-picture">Edit Profile Picture</a>
+                    <input type="Edit Profile Picture">
+
+                </form>
             </div>
-            
-
             {% endfor %}
     </body>
 <!-- {% endblock content %} -->
+
+<!-- test commit -->
