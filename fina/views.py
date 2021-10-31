@@ -32,7 +32,7 @@ def userLogin(request):
 def userLogout(request):
     logout(request)
     return redirect('login')
-    
+
 def profilePage(request):
     # profile = request.User.Profile.objects.all()
     # response = {'profile' : profile}      # Iterate user di html nantinya

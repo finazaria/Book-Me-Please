@@ -1,3 +1,49 @@
 body {
     background-color: #FFF8E5;
 }
+
+* {
+    box-sizing: border-box;
+}
+
+.all-content {
+    margin-top: 35px;
+    margin-left: 130px;
+    margin-right: 130px;
+    position:relative;
+}
+
+.row {
+    display:flex;
+}
+.column-left {
+    flex: 30%;
+    padding: 10px;
+}
+.column-right {
+    flex: 70%;
+    padding: 10px;
+}
+img {
+    object-fit: cover;
+    width:230px;
+    height:230px;
+    border-radius: 50%;
+}
+.edit-profpic-text {
+    margin-top: 15px;
+    margin-left: 40px;
+}
+.logout-button {
+    margin-top: 20px;
+    margin-left: 75px;
+}
+
+.user-name {
+    font-size: 57px;
+}
+.member-since {
+    font-size: 20px;
+    font-weight: lighter;
+}
+
