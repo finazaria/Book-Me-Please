@@ -1,0 +1,15 @@
+body {
+    background-color: #FFF8E5;
+}
+
+.all-content {
+    margin-top: 100px;
+    margin-left: 600px;
+    margin-right: 600px;
+}
+
+.update-btn {
+    border-radius: 18px;
+    background-color: #FFFF;
+    /* border: none; */
+}

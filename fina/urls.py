@@ -6,7 +6,8 @@ from .views import *
 urlpatterns = [
     path('', userLogin, name='login'),
     path('profile', profilePage, name='profilePage'),   # fina/profile
-    path('profile/edit-profile-picture', profilePicForm, name='profilePicForm')
+    path('profile/edit-profile-picture', profilePicForm, name='profilePicForm'),
+    path('profile/add-interest', addInterestForm, name='addInterestForm')
 ]
 
 if settings.DEBUG:

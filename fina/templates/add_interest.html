@@ -1,0 +1,22 @@
+{% extends 'base_user.html' %}   <!-- specific navbar for user -->
+{% load static %}
+<!-- 
+{% block content %} -->
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/add_interest.css' %}">
+    <body>
+        <div class="all-content">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                {% for n in form %}
+                    <div class="interest-choices">
+                        {{ n.form }}
+                    </div>
+                {% endfor %}
+                
+                <button class="update-btn" type="submit">Update</button>
+            </form>
+        </div>
+    </body>
+<!-- {% endblock content %} -->

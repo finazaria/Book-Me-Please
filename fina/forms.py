@@ -8,6 +8,12 @@ class ProfilePicForm(ModelForm):
     class Meta:
         model = Profile
         fields = ['profile_pic']
-    
+
+class InterestForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['interest']
+
+
 
 

@@ -47,3 +47,27 @@ img {
     font-weight: lighter;
 }
 
+.interest-word {
+    margin-top: 15px;
+    font-size: 28px;
+}
+
+.interest {
+    font-size: 18px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #ffffff;
+    max-width: fit-content;
+    margin-top: 10px;
+    border-radius: 18px;
+    box-shadow: 3px 5px #888888;
+
+    margin: 8px;
+}
+
+.add-button {
+    margin-left: 5px;
+}
+
+

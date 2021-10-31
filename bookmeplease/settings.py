@@ -58,7 +58,8 @@ INSTALLED_APPS = [
     'main',
     'mancay',
     'sena',
-    'fina'
+    'fina',
+    'multiselectfield'
 ]
 
 MIDDLEWARE = [

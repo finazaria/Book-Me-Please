@@ -31,6 +31,17 @@
                         Member since:
                         {{user.profile.member_since}}
                     </div>
+                    <div class="interest-word">
+                        Interests
+                    </div>
+                    {% for interest in user.profile.interest %}
+                        <span class="interest">
+                            {{ interest }}
+                        </span>
+                    {% endfor %}
+                    <a class="add-button" href="http://localhost:8000/fina/profile/add-interest">
+                        <img src="{% static 'img/plus-button.png'%}" style="max-width:35px; max-height:41px;" >
+                    </a>
                 </div>
             </div>
         </div>
