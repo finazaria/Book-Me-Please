@@ -10,8 +10,6 @@ from django.contrib import messages
 
 def userLogin(request):
     if request.method == "POST":
-        # username = request.POST.get('username')     # '' => the name of the tag tadi di html
-        # password = request.POST.get('password')
         username = request.POST['username']
         password = request.POST['password']
 
@@ -19,7 +17,6 @@ def userLogin(request):
 
         if user is not None:
             login(request, user)
-            # return render(request, 'user_profile_details.html')
             return redirect('profilePage')
         
         else:
@@ -38,8 +35,6 @@ def profilePage(request):
     # response = {'profile' : profile}      # Iterate user di html nantinya
     return render(request, 'user_profile_details.html')
     # nanti di html tinggal user.profile.attribute
-
-    #nampilin choices nya di profile page, kalo mau nambah, nnti pindah ke form lagi
 
 def profilePicForm(request):
     if request.method == "POST":
