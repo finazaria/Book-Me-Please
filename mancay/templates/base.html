@@ -218,7 +218,7 @@
             <a class="nav-link" href="http://localhost:8000/explore/">Explore</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="http://localhost:8000/explore/searchGenre">Sign In</a>
+            <a class="nav-link" href="#">Sign In</a>
           </li>
           <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -237,83 +237,10 @@
                     <input type="submit" id="btnaction" name="Mystery" value="Mystery">
                     <input type="submit" id="btnaction" name="Myth" value="Myth">
                     <input type="submit" id="btnaction" name="Romance" value="Romance">
-
-
-
-
                   </form>
-                    <!-- <input type="checkbox" class="form-check-input" id="check1" name="Action" value="something">
-                    <label class="form-check-label" for="check1">Action</label>
-
-                    <input type="checkbox" class="form-check-input" id="check2" name="Comedy" value="something">
-                    <label class="form-check-label" for="check2">Comedy</label>
-
-                    <input type="checkbox" class="form-check-input" id="check3" name="Crime" value="something">
-                    <label class="form-check-label" for="check3">Crime</label>
-
-                    <input type="checkbox" class="form-check-input" id="check4" name="Drama" value="something">
-                    <label class="form-check-label" for="check4">Drama</label>
-
-                    <input type="checkbox" class="form-check-input" id="check5" name="Fantasy" value="something">
-                    <label class="form-check-label" for="check5">Fantasy</label>
-
-                    <input type="checkbox" class="form-check-input" id="check6" name="Historycal" value="something">
-                    <label class="form-check-label" for="check6">Historycal</label>
-
-                    <input type="checkbox" class="form-check-input" id="check7" name="Horror" value="something">
-                    <label class="form-check-label" for="check7">Horror</label>
-
-                    <input type="checkbox" class="form-check-input" id="check8" name="Mystery" value="something">
-                    <label class="form-check-label" for="check8">Mystery</label>
-
-                    <input type="checkbox" class="form-check-input" id="check9" name="Myth" value="something">
-                    <label class="form-check-label" for="check9">Myth</label>
-
-                    <input type="checkbox" class="form-check-input" id="check10" name="Romance" value="something">
-                    <label class="form-check-label" for="check10">Romance</label> -->
-                    
-                    <!-- <input type="submit" name="action" value="action"></button> -->
-                    <!-- <button class="btn" onclick="filterSelection('Action')">Action</button>
-                    <button class="btn" onclick="filterSelection('Comedy')">Comedy</button>
-                    <button class="btn" onclick="filterSelection('Crime')">Crime</button>
-                    <button class="btn" onclick="filterSelection('Drama')">Drama</button>
-                    <button class="btn" onclick="filterSelection('Fantasy')">Fantasy</button>
-                    <button class="btn" onclick="filterSelection('Historycal')">Historycal</button>
-                    <button class="btn" onclick="filterSelection('Horror')">Horror</button>
-                    <button class="btn" onclick="filterSelection('Mystery')">Mystery</button>
-                    <button class="btn" onclick="filterSelection('Myth')">Myth</button>
-                    <button class="btn" onclick="filterSelection('Romance')">Romance</button> -->
-
-                    <!-- <a href="http://localhost:8000/explore/searchGenre" class="btn btn-primary" id="action">Action</a> -->
-                    <!-- <a href="#">Comedy</a>
-                    <a href="#">Crime</a>
-                    <a href="#">Drama</a>
-                    <a href="#">Fantasy</a>
-                    <a href="#">Historycal</a>
-                    <a href="#">Horror</a>
-                    <a href="#">Mystery</a>
-                    <a href="#">Myth</a>
-                    <a href="#">Romance</a> -->
                 </ul>
               </li>
         </ul>
-
-        <!-- <div class="subnav">
-          <button class="subnavbtn">GENRE <i class="fa fa-caret-down"></i></button>
-          <div class="subnav-content">
-            <a href="#">Action</a>
-            <a href="#">Comedy</a>
-            <a href="#">Crime</a>
-            <a href="#">Drama</a>
-            <a href="#">Fantasy</a>
-            <a href="#">Historycal</a>
-            <a href="#">Horror</a>
-            <a href="#">Mystery</a>
-            <a href="#">Myth</a>
-            <a href="#">Romance</a>
-          </div>
-        </div> -->
-        
       
      
     <form class="d-flex flex-row-reverse" method="post" action="{% url 'SearchBar' %}">
@@ -341,20 +268,6 @@
     }
   </script>
 
-  <!-- filter Genre -->
-  <!-- <script>
-    const button = document.querySelector('.input[type=button]');
-
-    button.addEventListener('click', updateButton);
-
-    function updateButton(){
-      if (button.value === 'Action'){
-        
-      }
-    }
-
-  </script> -->
-
 
 
   <script>
@@ -378,21 +291,3 @@
     
 
 {% endblock content %}
-
-
-
- <!-- <div class="subnav"> -->
-              <!-- <button class="subnavbtn">Genre<i class="fa fa-caret-down"></i></button> -->
-
-              <!-- <div class="subnav-content">
-                <a href="#">Action</a>
-                <a href="#">Comedy</a>
-                <a href="#">Crime</a>
-                <a href="#">Drama</a>
-                <a href="#">Fantasy</a>
-                <a href="#">Historycal</a>
-                <a href="#">Horror</a>
-                <a href="#">Mystery</a>
-                <a href="#">Myth</a>
-                <a href="#">Romance</a>
-              </div> -->
