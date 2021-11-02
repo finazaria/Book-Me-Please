@@ -1,40 +1,50 @@
 {% extends 'base_user.html' %}   <!-- specific navbar for user -->
 {% load static %}
-<!-- 
-{% block content %} -->
+
+<!--{% block content %} -->
 <meta charset="UTF-8" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/user_profile_details.css' %}">
     <body>
-        <div class="user-name">
-            {{user.profile.name}}
-        </div>
-        <h5 class="word-member-since">
-            Member since
-        </h5>
-        <div class="member-since">
-            {{user.profile.member_since}}
-        </div>
-        <div class="profile-pic"> 
-            <!-- Tergantung request, trs user (karena ini semua tergantung user siapa yang sedang logged in), 
-                memiliki relasi dengan PROFILE model, and
-                what we need to access is the "profile_pic" attribute.
-                Dan yang kita butuhkan adalah url nya -->
-            <!-- <img class="profile-pic-img" src={{request.user.profile.profile_pic.url}}>  -->
-            <img class="profile-pic-img" src={{user.profile.profile_pic.url}} style="max-width: 230px;"> 
-        </div>
+        <div class="all-content">
+            <div class="row">
 
-        <br>
-        <div class="edit-profpic-text" >
-            <a href="http://localhost:8000/fina/profile/edit-profile-picture">Edit Profile Picture</a>
+                <div class="column-left">
+                    <div class="profile-pic"> 
+                        <img class="profile-pic-img" src={{user.profile.profile_pic.url}} style="max-width: 230px;"> 
+                    </div>
+                    <div class="edit-profpic-text" >
+                        <a href="http://localhost:8000/fina/profile/edit-profile-picture">Edit Profile Picture</a>
+                    </div>
+                    
+                    {% if user.is_authenticated %}
+                    <button type="submit" class="logout-button">
+                        <a href="http://localhost:8000/fina/">LogOut</a>
+                    </button>
+                        {% endif %}
+                </div>
+
+                <div class="column-right">
+                    <div class="user-name">
+                        {{user.profile.name}}
+                    </div>
+                    <div class="member-since">
+                        Member since:
+                        {{user.profile.member_since}}
+                    </div>
+                    <div class="interest-word">
+                        Interests
+                    </div>
+                    {% for interest in user.profile.interest %}
+                        <span class="interest">
+                            {{ interest }}
+                        </span>
+                    {% endfor %}
+                    <a class="add-button" href="http://localhost:8000/fina/profile/add-interest">
+                        <img src="{% static 'img/plus-button.png'%}" style="max-width:35px; max-height:41px;" >
+                    </a>
+                </div>
+            </div>
         </div>
-
-        <br>
-
-        {% if user.is_authenticated %}
-        <button type="submit" class="logout-button">
-            <a href="http://localhost:8000/fina/">LogOut</a>
-        </button>
-        {% endif %}
-
     </body>
-<!-- {% endblock content %} -->
+    <!-- {% endblock content %} -->
+

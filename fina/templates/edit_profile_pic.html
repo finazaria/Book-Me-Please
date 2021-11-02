@@ -5,17 +5,21 @@
 <meta charset="UTF-8" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/edit_profile_pic.css' %}">
     <body>
-        <div class="edit-profile-picture">
-            <form action="" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="choose-file-btn">
-                    {{ form.profile_pic }}
-                </div>
-                <br>
-                <button class="update-btn" type="submit">Update</button>
-            </form>
+        <div class="all-content">
+            <div class="current-profile-pic">
+                <img class="profile-pic-img" src={{user.profile.profile_pic.url}} style="max-width: 230px;"> 
+            </div>
+            <div class="edit-profile-picture">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="choose-file-btn">
+                        {{ form.profile_pic }}
+                    </div>
+                    <br>
+                    <button class="update-btn" type="submit">Update</button>
+                </form>
+            </div>
         </div>
     </body>
 <!-- {% endblock content %} -->
 
-<!-- test commit -->
