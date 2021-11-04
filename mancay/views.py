@@ -9,8 +9,6 @@ def index(request):
     # return response.HttpResponse("Hello World")
     books = Book.objects.all().order_by('Name')
     response = {'books' : books}
-    print(books);
-    print(books[0].Name);
     return render(request,'index.html', response)
 
 
