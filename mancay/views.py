@@ -9,7 +9,9 @@ def index(request):
     # return response.HttpResponse("Hello World")
     books = Book.objects.all().order_by('Name')
     response = {'books' : books}
-    return render(request, 'index.html', response)
+    print(books);
+    print(books[0].Name);
+    return render(request,'index.html', response)
 
 
 def SearchBar(request):

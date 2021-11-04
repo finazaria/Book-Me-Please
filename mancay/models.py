@@ -9,6 +9,3 @@ class Book(models.Model):
     Genre = models.CharField(max_length=30)
     Background_photo = models.ImageField(null=True, blank=True)
 
-class Genre(models.Model):
-    imageUrl = models.CharField(max_length=200, default='DEAULT VALUE')
-    nameGenre = models.CharField(max_length=30)

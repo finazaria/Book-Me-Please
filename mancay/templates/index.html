@@ -30,6 +30,7 @@
             position: relative;
             margin: 10px auto;
             cursor: pointer;
+            
         }
 
 
@@ -55,6 +56,20 @@
             transition: all 0.15s linear;
             font-weight: bold;
         }
+
+        .profile-card-6 .profile-positionleft{
+            position: absolute;
+            color: #FFF;
+            right: 0px;
+            bottom: 2px;
+            transition: all 0.15s linear;
+            font-weight: bold;
+        }
+
+        .profile-card-6 .profile-positionleft .btn{
+            color: #FFF;
+        }
+        
 
         .profile-card-6 .profile-overview {
             position: absolute;
@@ -86,6 +101,10 @@
 
         .profile-card-6:hover .profile-position {
             padding-bottom: 12px;
+        }
+
+        .profile-card-6:hover .profile-positionleft  {
+            padding-bottom: 10px;
         }
 
         .profile-card-6:hover .profile-overview {
@@ -120,26 +139,68 @@
             
         }
 
+        .flipper{
+            
+            transform-style: preserve-3d;
+            transition: all 0.5 ease;
+        }
+
+       .flipper.is-flipped{
+           transform: rotateY(180deg);
+       }
+
+       
+           
+       
+
+       .front{
+        width: 100%;
+        backface-visibility: hidden;
+
+        
+       }
+
+       .back{
+           position: absolute;
+           width: 100%;
+           height: 100%;
+           color: #FFF;
+           background-color: darkslategrey;
+           backface-visibility: hidden;
+           overflow: hidden;
+           transform: rotateY(180deg);
+       }
+
+       
+
+
+
 
 
 
 
     </style>
 
-<body>
+    
 
-    
-    {% if books.name != null %}
-    
+<body>
     <div class="container-fluid">
         
         <div class="row">
             {% for book in books %}
             <div class="col-md-3 mb-5 d-flex">
                 <div class="profile-card-6">
+
+                    
                     <img src= {{book.Background_photo.url}}>
                     <div class="profile-name">{{book.Name}}</div>
                     <div class="profile-position">{{book.Genre}}</div>
+                    <div class="profile-positionleft">
+                        <button class="btn btn-simple" onclick="">
+                            <i class="fas fa-redo"></i> Show
+                        </button>
+                    </div>
+                        
                     <div class="profile-overview">
                         <div class="profile-overview">
                             <div class="row text-center">
@@ -149,6 +210,10 @@
                             </div>
                         </div>
                         </div>
+
+                    
+                  
+
                     </div>
                 </div>
                 {% endfor %}
@@ -156,12 +221,8 @@
                 
                 
     </div>
-
-    {% else %}
-
-    <h2>We will provide more book... </h2>
-
-    {% endif %}
            
 </body>
+
+
 {% endblock %}

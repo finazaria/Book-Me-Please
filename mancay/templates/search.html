@@ -1,134 +1,127 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 {% block content %}
+    <style>
+        a,
+        a:hover,
+        a:focus {
+            color: inherit;
+        }
 
-<style>
-    a,
-    a:hover,
-    a:focus {
-        color: inherit;
-    }
+        .container-fluid,
+        .container {
+            max-width: none;
+        }
 
-    .container-fluid,
-    .container {
-        max-width: none;
-    }
+        .card-container {
+            padding: 100px 0px;
+            -webkit-perspective: 1000;
+            perspective: 1000;
+        }
 
-    .card-container {
-        padding: 100px 0px;
-        -webkit-perspective: 1000;
-        perspective: 1000;
-    }
-
-    .profile-card-6 {
-        max-width: 300px;
-        background-color: #FFF;
-        border-radius: 5px;
-        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        position: relative;
-        margin: 10px auto;
-        cursor: pointer;
-    }
-
-
-
-    .profile-card-6 .profile-name {
-        position: absolute;
-        top: 10px;
-        left: 6px;
-        font-size: 25px;
-        font-weight: bold;
-        color: #FFF;
-        padding: 15px 20px;
-        background: linear-gradient(140deg, rgba(0, 0, 0, 0.4) 50%, rgba(255, 255, 0, 0) 50%);
-        transition: all 0.15s linear;
-    }
-
-    .profile-card-6 .profile-position {
-        position: absolute;
-        color: #FFF;
-        
-        left: 15px;
-        bottom: 8px;
-        transition: all 0.15s linear;
-        font-weight: bold;
-    }
-
-    .profile-card-6 .profile-overview {
-        position: absolute;
-        bottom: 0px;
-        left: 0px;
-        right: 0px;
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 50%, rgba(255, 255, 0, 0));
-        color: #FFF;
-        padding: 50px 0px 20px 0px;
-        transition: all 0.15s linear;
-    }
-
-    .profile-card-6 .profile-overview h3 {
-        font-weight: bold;
-    }
-
-    .profile-card-6 .profile-overview p {
-        color: rgba(255, 255, 255, 0.7);
-    }
-
-    .profile-card-6:hover img {
-        filter: brightness(80%);
-    }
-
-    .profile-card-6:hover .profile-name {
-        padding-left: 25px;
-        padding-top: 20px;
-    }
-
-    .profile-card-6:hover .profile-position {
-        padding-bottom: 12px;
-    }
-
-    .profile-card-6:hover .profile-overview {
-        padding-bottom: 25px;
-    }
-
-    .profile-card-6 .col-xs-4{
-        align-items: center;
-        bottom: 30px;
-        color: #FFF;
-        transition: all linear 0.25s;
-        
-    }
-
-    .profile-card-6 .col-xs-4 p{
-        text-align: center;
-        margin-bottom: 10px;
-
-    }
-
-    .profile-card-6 img {
-        max-width: 100%;
-        max-height: 100%;
-        min-width: 100%;
-        min-height: 100%;
-        transition: all 0.15s linear;
-        
-    }
-
-    h2{
-        text-align: center;
-        
-    }
-
-    h2 .sorry{
-        vertical-align: middle;
-    }
+        .profile-card-6 {
+            max-width: 300px;
+            
+            background-color: #FFF;
+            border-radius: 5px;
+            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            margin: 10px auto;
+            cursor: pointer;
+        }
 
 
 
+        .profile-card-6 .profile-name {
+            position: absolute;
+            top: 10px;
+            left: 6px;
+            font-size: 25px;
+            font-weight: bold;
+            color: #FFF;
+            padding: 15px 20px;
+            background: linear-gradient(140deg, rgba(0, 0, 0, 0.4) 50%, rgba(255, 255, 0, 0) 50%);
+            transition: all 0.15s linear;
+        }
 
+        .profile-card-6 .profile-position {
+            position: absolute;
+            color: #FFF;
+            
+            left: 15px;
+            bottom: 8px;
+            transition: all 0.15s linear;
+            font-weight: bold;
+        }
 
-</style>
+        .profile-card-6 .profile-overview {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 50%, rgba(255, 255, 0, 0));
+            color: #FFF;
+            padding: 50px 0px 20px 0px;
+            transition: all 0.15s linear;
+        }
+
+        .profile-card-6 .profile-overview h3 {
+            font-weight: bold;
+        }
+
+        .profile-card-6 .profile-overview p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .profile-card-6:hover img {
+            filter: brightness(80%);
+        }
+
+        .profile-card-6:hover .profile-name {
+            padding-left: 25px;
+            padding-top: 20px;
+        }
+
+        .profile-card-6:hover .profile-position {
+            padding-bottom: 12px;
+        }
+
+        .profile-card-6:hover .profile-overview {
+            padding-bottom: 25px;
+        }
+
+        .profile-card-6 .col-xs-4{
+            align-items: center;
+            bottom: 30px;
+            color: #FFF;
+            transition: all linear 0.25s;
+            
+        }
+
+        .profile-card-6 .col-xs-4 p{
+            text-align: center;
+            margin-bottom: 10px;
+
+        }
+
+        .profile-card-6 img {
+            max-width: 100%;
+            max-height: 100%;
+            min-width: 100%;
+            min-height: 100%;
+            transition: all 0.15s linear;
+            
+        }
+
+        h2{
+            text-align: center;
+            
+        }
+
+    </style>
 
     <body>
             
@@ -138,7 +131,7 @@
 
             <br/>
 
-            {% if books.name != null %}
+            
             <div class="container-fluid">
         
                 <div class="row">
@@ -165,14 +158,7 @@
                         
             </div>
 
-            {% else %}
-
-            <h2 class="sorry">Sorry books that contains {{searched}} not yet available</h2>
-            <h2 class="sorry">We will provide more book... </h2>
-
-            {% endif %}
             
-
             {% else %}
 
             <h2 >You Forgot To Search ... </h2>
