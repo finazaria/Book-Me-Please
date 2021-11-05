@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<body>
+    <link rel="stylesheet" href="{% static 'css/form-style.css' %}" type="text/css">
+    <div class="header-container">
+        <div class="wrapper">
+            <header>
+                <div class="message-box">
+                    <h1>Apa tanggapan mu terkait buku tersebut?</h1>
+                    <br>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="book" value="" id="book-id-value" />
+                        <h3>Nama:</h3>
+                        <input id="name" type="text" name="name" maxlength="30" required>
+                        <h3>Komentar:</h3>
+                        <textarea id="comment" name="comment" ></textarea><br />
+                        <br>
+                        <input type="submit" value="SUBMIT" id="submit-btn" onclick="return clicked();">
+                    </form>
+                </div>
+
+                <div class="message-deco">
+                    <img src="{% static 'img/form-deco.png' %}" alt="">
+                </div>
+            </header>
+        </div>
+    </div>
+
+    <script>
+        function clicked() {
+            return confirm('Komentar kamu dapat dilihat oleh semua orang. Apakah ingin tetap melanjutkan?');
+        }
+        var identifier = window.location.pathname.split("/")[3];
+        document.getElementById("book-id-value").value = identifier;
+    </script>
+</body>
+
+
+{% endblock %}
+

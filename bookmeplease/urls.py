@@ -26,8 +26,8 @@ urlpatterns = [
     path('explore/', include('mancay.urls')),
     path('sena/', include('sena.urls')),
     path('fina/', include('fina.urls')),
-    path('bima/', include('bima.urls'))
-
+    path('bima/', include('bima.urls')),
+    path('quiz/', include('faras_quizes.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
