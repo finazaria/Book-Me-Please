@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'mancay',
     'sena',
     'fina',
+    'bima',
     'multiselectfield'
 ]
 

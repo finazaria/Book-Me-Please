@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>{{page_title}}</title>
+    </head>
+
+    <body>
+        <h1>{{page_title}}
+
+            Apakah anda yakin akan logout?
+        </h1>
+
+        <form method="POST">
+            {%csrf_token%}
+            <input type="submit" name="logout">
+        </form>
+    </body>
+</html>
