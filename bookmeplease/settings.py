@@ -59,6 +59,9 @@ INSTALLED_APPS = [
     'mancay',
     'sena',
     'fina',
+    'faras_questions',
+    'faras_quizes',
+    'faras_results',
     'multiselectfield'
 ]
 

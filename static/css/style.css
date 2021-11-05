@@ -5,3 +5,7 @@
 body {
   font-family: 'Rubik', sans-serif;
 }
+
+.not-visible{
+  display: none;
+}
