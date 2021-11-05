@@ -14,8 +14,8 @@ venv.bak/
 __pycache__/
 
 # SQLite database
-db.sqlite3
-db.sqlite3-journal
+#db.sqlite3
+#db.sqlite3-journal
 
 # User-uploaded media
 media
