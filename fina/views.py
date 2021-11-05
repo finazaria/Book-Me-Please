@@ -1,13 +1,11 @@
 from django.core.checks import messages
 from django.shortcuts import render,redirect
-from django.http.response import HttpResponse, HttpResponseRedirect
-from .models import User, Profile
+from django.http.response import HttpResponseRedirect
 from .models import *
-from mancay.models import Book
 from .forms import ProfilePicForm, InterestForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.http import HttpResponse, JsonResponse
+from django.contrib.auth.decorators import login_required
 
 def userLogin(request):
     if request.method == "POST":
@@ -31,6 +29,7 @@ def userLogout(request):
     logout(request)
     return redirect('login')
 
+@login_required(login_url='/fina/')
 def profilePage(request):
     # profile = request.User.Profile.objects.all()
     # response = {'profile' : profile}      # Iterate user di html nantinya
