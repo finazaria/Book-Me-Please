@@ -17,12 +17,11 @@
                     </div>
                     
                     {% if user.is_authenticated %}
-                    <button type="submit" class="logout-button">
-                        <a href="http://localhost:8000/fina/">LogOut</a>
+                    <button type="button" class="logout-button">
+                        <a href="{% url 'login' %}">LogOut</a>
                     </button>
                         {% endif %}
                 </div>
-
                 <div class="column-right">
                     <div class="user-name">
                         {{user.profile.name}}
