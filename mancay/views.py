@@ -2,13 +2,19 @@ from django.http import response, HttpResponseRedirect
 from django.shortcuts import render
 from .models import *
 from django.db.models import Q
+from sena.forms import CommentForm
+from sena.models import Comment
 
 
 
 def index(request):
     # return response.HttpResponse("Hello World")
     books = Book.objects.all().order_by('Name')
-    response = {'books' : books}
+    comments = str(list(Comment.objects.values('id', 'name', 'comment', 'book_id')))
+    response = {
+        'books' : books,
+        'comments' : comments
+    }
     return render(request,'index.html', response)
 
 
@@ -89,9 +95,15 @@ def GenreSearch(request):
         books = Book.objects.filter(Genre__contains = 'Drama').order_by('Name')
         return render(request, 'searchGenre.html' , {'books':books, 'genre':genre} )
 
+def add_comment(request):
+    form = CommentForm(request.POST or None)
+    if (request.method == 'POST') & (form.is_valid()):
+        form.save()
+        return HttpResponseRedirect('/explore')
+    
+    response = {'form' : form}
 
-
-        
+    return render(request, 'index_form.html', response)
 
 
 
@@ -108,7 +120,6 @@ def GenreSearch(request):
     # books = Book.objects.all().values()
     # response = {'books' : books}
     # return render(request, 'searchGenre.html', response)
-
     
 
     
