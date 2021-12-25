@@ -13,7 +13,7 @@
                         <img class="profile-pic-img" src={{user.profile.profile_pic.url}} style="max-width: 230px;"> 
                     </div>
                     <div class="edit-profpic-text" >
-                        <a href="edit-profile-picture/">Edit Profile Picture</a>
+                        <a href="profile/edit-profile-picture">Edit Profile Picture</a>
                     </div>
                     
                     {% if user.is_authenticated %}
@@ -38,7 +38,7 @@
                             {{ interest }}
                         </span>
                     {% endfor %}
-                    <a class="add-button" href="add-interest/">
+                    <a class="add-button" href="profile/add-interest">
                         <img src="{% static 'img/plus-button.png'%}" style="max-width:35px; max-height:41px;" >
                     </a>
                 </div>
