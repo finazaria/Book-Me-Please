@@ -8,7 +8,10 @@ class Comment(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return '%s - %s' % (self.name, self.book.Name)
+    
+        return '%s' % (self.book.pk)
+    def get_book(self):
+        return self.book.pk
 
 
 # Create your models here.
