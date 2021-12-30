@@ -1,6 +1,6 @@
 # BookMePlease
 Tugas Kelompok E01 - Mata Kuliah Pemrograman Berbasis Platform
-Fakultas Ilmu Komputer UI, Semester Ganjil 2021/2022
+Fasilkom UI, Semester Ganjil 2021/2022
 
 # Anggota Kelompok 
 1. Setasena Randata Ramadanie 2006482792

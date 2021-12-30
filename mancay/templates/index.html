@@ -33,6 +33,16 @@
             
         }
 
+        .btn.btn-primary {
+            max-width: 300px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+            margin: 10px auto;
+            cursor: pointer;
+            
+        }
+
 
 
         .profile-card-6 .profile-name {
@@ -90,6 +100,10 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
+        .modal-footer p {
+            text-align: left;
+        }
+
         .profile-card-6:hover img {
             filter: brightness(80%);
         }
@@ -115,14 +129,12 @@
             align-items: center;
             bottom: 30px;
             color: #FFF;
-            transition: all linear 0.25s;
-            
+            transition: all linear 0.25s;        
         }
 
         .profile-card-6 .col-xs-4 p{
             text-align: center;
             margin-bottom: 10px;
-
         }
 
         .profile-card-6 img {
@@ -131,16 +143,17 @@
             min-width: 100%;
             min-height: 100%;
             transition: all 0.15s linear;
-            
         }
 
         h2{
-            text-align: center;
-            
+            text-align: center; 
+        }
+
+        .modal-body h2 {
+            text-align: left;
         }
 
         .flipper{
-            
             transform-style: preserve-3d;
             transition: all 0.5 ease;
         }
@@ -149,15 +162,9 @@
            transform: rotateY(180deg);
        }
 
-       
-           
-       
-
        .front{
         width: 100%;
-        backface-visibility: hidden;
-
-        
+        backface-visibility: hidden;  
        }
 
        .back{
@@ -171,60 +178,143 @@
            transform: rotateY(180deg);
        }
 
-       
+       .comment-title {
+           background-color: #ffb345;
+       }
 
+       .comment-comment {
+           background-color: #FDCE89;
+       }
 
+       .modal-body {
+           background-color: #fff8e5;
+       }
 
+       .modal-header {
+           background-color: #FDCE89;
+       }
 
-
-
-
+       .modal-footer {
+            background-color: #fff8e5;
+       }
     </style>
-
-    
 
 <body>
     <div class="container-fluid">
-        
         <div class="row">
             {% for book in books %}
             <div class="col-md-3 mb-5 d-flex">
                 <div class="profile-card-6">
-
-                    
                     <img src= {{book.Background_photo.url}}>
                     <div class="profile-name">{{book.Name}}</div>
-                    <div class="profile-position">{{book.Genre}}</div>
-                    <div class="profile-positionleft">
-                        <button class="btn btn-simple" onclick="">
-                            <i class="fas fa-redo"></i> Show
-                        </button>
-                    </div>
-                        
+                    <div class="profile-position">{{book.Genre}}</div>         
                     <div class="profile-overview">
                         <div class="profile-overview">
                             <div class="row text-center">
                                 <div class="col-xs-4">
                                     <p>{{book.Author}}</p>
                                 </div>
+                                <!-- Untuk melihat comment dalam buku (Sena) -->
+                                <div class="comments-popup">
+                                    <button 
+                                    type="button"
+                                    class="btn btn-warning"
+                                    data-toggle="modal"
+                                    data-target="#exampleModal"
+                                    data-judul="{{book.Name}}"
+                                    data-author="{{book.Author}}"
+                                    data-komen="{{book.comments.all}}"
+                                    data-pk = "{{ book.pk }}">
+                                    Show Comments
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        </div>
-
-                    
-                  
-                        
                     </div>
-                    test
+                </div>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="comment_modal_body">
+                            
+                            <!-- <form action="" method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Nama: </label>
+                                    {{form.name}}
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Komentar: </label>
+                                    {{form.comment}}
+                                </div>
+                                <input type="submit" value="SUBMIT" id="submit-btn">
+                            </form> -->
+                        </div>
+                            <div class="modal-footer">
+                                <strong>Punya komentar juga terkait buku ini? Tambahkan sekarang!</strong>
+                                <a href="" id="add-comment-link">
+                                    <button type="button" class="btn btn-warning">Add Comment About This Book</button>
+                                </a>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- test -->
                     
                 </div>
-                {% endfor %}
+                <script>
+                    $('#exampleModal').on('show.bs.modal', function (event) {
+                        var button = $(event.relatedTarget) // Button that triggered the modal
+                        var bookTitle = button.data('judul') // Extract info from data-* attributes
+                        var bookAuthor = button.data('author')
+                        var commentList = button.data('komen')
+                        var pk = button.data('pk')
+
+                        var comments = "{{ comments|safe }}"
+
+                        var comment_regex = comments.replace(/'/g, '"')
+                        var comment_parsed = JSON.parse(comment_regex)
+
+                        comment_modal_body = document.getElementById('comment_modal_body')
+                        
+                        comment_modal_body.innerHTML = ""
+
+                        for (var i=0; i<comment_parsed.length; i++) {
+                            if (comment_parsed[i].book_id === pk) {
+                                var title = document.createElement('h4');
+                                title.innerHTML = comment_parsed[i].name;
+                                title.classList.add('comment-title');
+                                comment_modal_body.appendChild(title);
+                                var comment = document.createElement('p');
+                                comment.innerHTML = "Komentar: " + comment_parsed[i].comment;
+                                comment.classList.add('comment-comment');
+                                comment_modal_body.appendChild(comment);
+                            }
+                        }
+
+                        document.getElementById('add-comment-link').href = "add-comment/" + pk
+
+                        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                        var modal = $(this)
+                        modal.find('.modal-title').text("Comments about " + bookTitle + " by " + bookAuthor)
+                        modal.find('.comment-content').text(commentList)
+                    })
+                </script>  
+            </div>
+            {% endfor %}
         </div>
                 
-                
+    <!-- Modal -->    
     </div>
-           
 </body>
 
 
 {% endblock %}
+

@@ -1,12 +1,11 @@
 from django.core.checks import messages
 from django.shortcuts import render,redirect
 from django.http.response import HttpResponseRedirect
-from .models import User, Profile
 from .models import *
-from mancay.models import Book
 from .forms import ProfilePicForm, InterestForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 def userLogin(request):
     if request.method == "POST":
@@ -30,6 +29,7 @@ def userLogout(request):
     logout(request)
     return redirect('login')
 
+@login_required(login_url='/fina/')
 def profilePage(request):
     # profile = request.User.Profile.objects.all()
     # response = {'profile' : profile}      # Iterate user di html nantinya
@@ -37,23 +37,19 @@ def profilePage(request):
     # nanti di html tinggal user.profile.attribute
 
 def profilePicForm(request):
-    if request.method == "POST":
-        # instance nya merupakan info2 yang udah ada dari si user
-        form = ProfilePicForm(request.POST, 
-        request.FILES, instance=request.user.profile)
+    profil = request.user.profile
+    context = {"profil" : profil}
+    form = ProfilePicForm(request.POST, 
+        request.FILES, instance=profil)
 
+    if request.is_ajax and request.method == "POST":
         if form.is_valid():
             form.save()      # Save the form data to model
             messages.success(request, f'Your profile picture has been updated!')
-            return redirect('profilePage')
-        else:
-            messages.error(request, f'There is an error')
+            return HttpResponseRedirect('/fina/profile/edit-profile-picture')
 
-    else:
-        form = ProfilePicForm(instance=request.user.profile)
 
-    context={'form':form}
-    # form untuk ganti prof pic di page terpisah
+    context['form'] = form
     return render(request, 'edit_profile_pic.html', context)
 
 def addInterestForm(request):

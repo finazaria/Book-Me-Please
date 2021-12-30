@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url
 from django.contrib import admin
 from django.urls import include, path
 from mancay.views import *
@@ -20,12 +21,19 @@ from mancay.views import *
 from django.conf.urls.static import static
 from django.conf import settings
 
+# from rest_framework.urlpatterns import format_suffix_paformat_suffix_patterns
+from sena import views as sena_views
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
     path('explore/', include('mancay.urls')),
     path('sena/', include('sena.urls')),
-    path('fina/', include('fina.urls'))
+    path('fina/', include('fina.urls')),
+    path('bima/', include('bima.urls')),
+    path('quiz/', include('faras_quizes.urls')),
+    url(r'^showcomments/', sena_views.comment_list.as_view()),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

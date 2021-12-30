@@ -13,16 +13,15 @@
                         <img class="profile-pic-img" src={{user.profile.profile_pic.url}} style="max-width: 230px;"> 
                     </div>
                     <div class="edit-profpic-text" >
-                        <a href="http://localhost:8000/fina/profile/edit-profile-picture">Edit Profile Picture</a>
+                        <a href="profile/edit-profile-picture">Edit Profile Picture</a>
                     </div>
                     
                     {% if user.is_authenticated %}
-                    <button type="submit" class="logout-button">
-                        <a href="http://localhost:8000/fina/">LogOut</a>
+                    <button type="button" class="logout-button">
+                        <a href="{% url 'login' %}">LogOut</a>
                     </button>
                         {% endif %}
                 </div>
-
                 <div class="column-right">
                     <div class="user-name">
                         {{user.profile.name}}
@@ -39,7 +38,7 @@
                             {{ interest }}
                         </span>
                     {% endfor %}
-                    <a class="add-button" href="http://localhost:8000/fina/profile/add-interest">
+                    <a class="add-button" href="profile/add-interest">
                         <img src="{% static 'img/plus-button.png'%}" style="max-width:35px; max-height:41px;" >
                     </a>
                 </div>
