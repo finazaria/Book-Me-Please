@@ -4,6 +4,14 @@ from .models import *
 from django.db.models import Q
 from sena.forms import CommentForm
 from sena.models import Comment
+from django.shortcuts import render, get_object_or_404
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import serializers, status
+# from .models import 
+from .serializers import bookSerializer
+import traceback
+
 
 
 
@@ -105,8 +113,36 @@ def add_comment(request):
 
     return render(request, 'index_form.html', response)
 
+class book_list(APIView):
 
+    def get_queryset(self):
+        bookAll = Book.objects.all()
+        return bookAll
+    
+        # try:
+        #     serializer = bookSerializer(bookAll, many=True)
+        # except Exception:
+        #     print(traceback.format_exc())
+        #     serializer = bookSerializer(bookAll, many=True)
+        
+        # return Response(serializer.data)
+        
+    
+    
 
+    def get(self, request, *args, **kwargs):
+        try:
+            bookAll = Book.objects.all()
+            serializer = bookSerializer(bookAll, many=True)
+        except Exception:
+            print(traceback.format_exc())
+            # book = Book.objects.all()
+            serializer = bookSerializer(bookAll, many=True)
+
+        return Response(serializer.data)
+
+    def post(self):
+        pass
 
 
 

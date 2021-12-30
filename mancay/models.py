@@ -9,3 +9,9 @@ class Book(models.Model):
     Genre = models.CharField(max_length=30)
     Background_photo = models.ImageField(null=True, blank=True)
 
+
+    def __str__(self):
+        return '%s' % (self.Name)
+    
+    def get_book(self):
+        return self.Name
