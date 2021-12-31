@@ -128,8 +128,6 @@ class book_list(APIView):
         # return Response(serializer.data)
         
     
-    
-
     def get(self, request, *args, **kwargs):
         try:
             bookAll = Book.objects.all()
