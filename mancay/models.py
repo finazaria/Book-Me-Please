@@ -4,6 +4,7 @@ from django.utils.translation import deactivate
 # Create your models here.
 
 class Book(models.Model):
+    id = models.AutoField(primary_key=True)
     Name = models.CharField(max_length=100)
     Author = models.CharField(max_length=30)
     Genre = models.CharField(max_length=30)
@@ -11,7 +12,7 @@ class Book(models.Model):
 
 
     def __str__(self):
-        return '%s' % (self.Name)
+        return '%s' % (self.id)
     
     def get_book(self):
-        return self.Name
+        return self.id
