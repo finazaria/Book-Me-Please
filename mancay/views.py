@@ -130,12 +130,14 @@ class book_list(APIView):
     
     def get(self, request, *args, **kwargs):
         try:
-            bookAll = Book.objects.all()
-            serializer = bookSerializer(bookAll, many=True)
+            # bookAll = Book.objects.all()
+            idBUku = request.query_params["id"]
+            buku = Book.objects.filter(id=idBUku)
+            serializer = bookSerializer(buku, many=True)
         except Exception:
             print(traceback.format_exc())
-            # book = Book.objects.all()
-            serializer = bookSerializer(bookAll, many=True)
+            buku = Book.objects.all()
+            serializer = bookSerializer(buku, many=True)
 
         return Response(serializer.data)
 
