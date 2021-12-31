@@ -24,6 +24,8 @@ from django.conf import settings
 # from rest_framework.urlpatterns import format_suffix_paformat_suffix_patterns
 from sena import views as sena_views
 from mancay import views as mancay_views
+from fina import views as fina_views
+
 
 
 urlpatterns = [
@@ -36,6 +38,7 @@ urlpatterns = [
     path('quiz/', include('faras_quizes.urls')),
     url(r'^showcomments/', sena_views.comment_list.as_view()),
     url(r'^bookJson/', mancay_views.book_list.as_view()),
+    url(r'^userJson/', fina_views.user_list.as_view()),
     
 ]
 

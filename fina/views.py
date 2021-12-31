@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.core.checks import messages
 from django.shortcuts import render,redirect
 from django.http.response import HttpResponseRedirect
@@ -6,6 +7,25 @@ from .forms import ProfilePicForm, InterestForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+
+# third party imports
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .serializers import ProfileSerializer
+
+class user_list(APIView):
+    def get(self, request, *args, **kwargs):
+        # get data Profile per user yang lagi login nya
+        profile = Profile.objects.all()
+        serializer = ProfileSerializer(profile, many=True)
+        return Response(serializer.data)
+
+# @api_view(['GET'])
+# def getProfile(request):
+#     profile = Profile.objects.all()
+#     serializer = ProfileSerializer(profile, many=True)
+#     return Response(serializer.data)
+
 
 def userLogin(request):
     if request.method == "POST":
@@ -70,4 +90,11 @@ def addInterestForm(request):
     context={'form':form}
     # form untuk add Interest ada di page terpisah
     return render(request, 'add_interest.html', context)
+
+def test_view(request):
+    data = {
+        'name' : 'john',
+        'age' : 23
+    }
+    return JsonResponse(data, safe=False)
 
