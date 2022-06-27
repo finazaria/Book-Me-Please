@@ -16,7 +16,7 @@ https://bookmeplease.herokuapp.com/
 ## About BookMePlease
 The COVID-19 pandemic that has shocked the world has forced people to move towards the digitalization era. This also implies that all activities cannot be done offline, but online. Of course, as human beings, we need social interactions. Thus, spending time at home can be a challenge at times. Laziness to boredom quickly haunts us. Therefore, our group will create a solution to overcome boredom during the pandemic by creating a website called BookMePlease. BookMePlease is a website that provides interesting book recommendations, according to the preferences of each user. BookMePlease presents a variety of genres, allowing users to explore the book they want to read.
 
-## Modul
+## Features
 1. Page Register Form + Login User
 2. Page Form genre book interest
 3. Page Form User Profile details
