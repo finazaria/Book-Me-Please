@@ -1,6 +1,9 @@
 # BookMePlease
-Group Assignment E01 - Platform-based Programming Course [CSGE602022]
-Faculty of Computer Science, University of Indonesia Odd Semester 2021/2022
+Group Assignment E01
+
+Platform-based Programming Course [CSGE602022] with Django and Flutter \
+Faculty of Computer Science, University of Indonesia \
+Odd Semester 2021/2022
 
 ### Group Members
 1. Setasena Randata Ramadanie (2006482792)
